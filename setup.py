@@ -6,5 +6,13 @@ setup(
     packages=['core'],
     entry_points={
         'console_scripts': ['tst = core.main:main']
-    }
+    },
+
+    install_requires=[
+        'Colorama',
+        'Click',
+        'beautifulsoup4',
+        'requests',
+        ]
         )
+

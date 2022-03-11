@@ -21,19 +21,23 @@ def run_source(filename: str):
 def set_default_filename_command(filename: str):
     manage_files.set_default_filename(filename)
 
+
 @click.command('new', help='Makes a cpp file, which have tamplate code and makes it default executable file')
 @click.argument('filename')
 def makefile(filename: str):
     manage_files.make_templated_cpp_file(filename)
 
+
 @click.command('init', help='Makes dependency files')
 def init_files():
     manage_files.make_initialization_files()
+
 
 @click.command('link', help='Parses samples from codeforces')
 @click.argument('url_link')
 def get_samples(url_link: str):
     parse_codeforces.write_samples(url_link)
+
 
 @click.group(help="This programm allows you to automitize compilation and testing\
         of your programms")
