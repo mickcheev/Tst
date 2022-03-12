@@ -13,6 +13,7 @@ setup(
         'Click',
         'beautifulsoup4',
         'requests',
+        'html5lib'
         ]
         )
 
