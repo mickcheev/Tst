@@ -6,6 +6,7 @@
 #include <cmath>
 #include <functional>
 #include <numeric>
+#include <string>
 
 using namespace std;
 

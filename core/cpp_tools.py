@@ -4,7 +4,8 @@ import os
 
 from colorama import Fore
 
-from . import manage_files
+import manage_files
+import exceptions
 
 DEFAULT_SOURCE_NAME = 'main'
 
@@ -22,11 +23,14 @@ def execute_cpp():
             messages.append(Fore.RED + f'Test {(i+2)//2}: Time limit 1s!\nSample: ' + tests[i])
             continue
         else:
+            if process.stderr!='':
+                raise exceptions.cpp_runtime_error_exception(process.stderr)
             output = process.stdout.strip()
             if output!=tests[i+1].strip():
                 messages.append(Fore.RED + f'Test {(i+2)//2}: Wrong answer!\n' + Fore.RESET
                         + f'Sample: {tests[i]}\nYour answer: \n {output}\nCorrect answer: \n {tests[i+1]}')
                 continue
+
         messages.append(Fore.GREEN + f'Test {(i+2)//2}: OK!')
     return messages
 
@@ -46,11 +50,11 @@ def compile_cpp(filename: str) -> bool:
         if os.path.exists(DEFAULT_SOURCE_NAME):
             os.system(f'rm {DEFAULT_SOURCE_NAME}')
 
-        subprocess.run([f'g++' , f'{filename}', '-o', f'{DEFAULT_SOURCE_NAME}'], shell=False, capture_output=True)
+        process = subprocess.run([f'g++' , f'{filename}', '-o',
+            f'{DEFAULT_SOURCE_NAME}'],shell=False, capture_output=True, text=True)
 
         if not os.path.exists(f'{DEFAULT_SOURCE_NAME}'):
-            print(Fore.RED + 'Is seems you have a compilation error')
-            return False
+            raise exceptions.cpp_complilation_error_exception(process.stderr)
     return True
 
 
