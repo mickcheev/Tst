@@ -3,7 +3,7 @@ from dataclasses import dataclass
 
 from bs4 import BeautifulSoup
 
-import exceptions
+from . import exceptions
 
 @dataclass
 class SampleTest:

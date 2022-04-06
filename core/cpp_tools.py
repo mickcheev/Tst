@@ -4,8 +4,8 @@ import os
 
 from colorama import Fore
 
-import manage_files
-import exceptions
+from . import manage_files
+from . import exceptions
 
 DEFAULT_SOURCE_NAME = 'main'
 

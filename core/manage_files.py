@@ -2,7 +2,7 @@ import json
 import subprocess
 import os
 
-DEFAULT_PATH = '/usr/bin/'
+DEFAULT_PATH = '/etc/tst/'
 
 def set_default_filename(filename: str):
     data = {}

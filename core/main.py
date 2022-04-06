@@ -1,17 +1,20 @@
-#!/usr/bin/python
 import click
 
-
 from . import parse_codeforces
-from . import cpp_tools
-from . import manage_files
+from .import cpp_tools
+from .import manage_files
 
+from .exceptions import TstException
 
 
 @click.command('run', help='Start (compile) executable file and test it using samples at Samples.txt')
 @click.option('--filename', default=manage_files.get_default_filename(), help='Set the default execute file')
 def run_source(filename: str):
-    cpp_tools.compile_cpp(filename)
+    try:
+        cpp_tools.compile_cpp(filename)
+    except TstException as ex:
+        print(ex.message())
+
     for mes in cpp_tools.execute_cpp():
             print(mes)
 
@@ -36,7 +39,10 @@ def init_files():
 @click.command('link', help='Parses samples from codeforces')
 @click.argument('url_link')
 def get_samples(url_link: str):
-    parse_codeforces.write_samples(url_link)
+    try:
+        parse_codeforces.write_samples(url_link)
+    except TstException as ex:
+        print(ex.message())
 
 
 @click.group(help="This programm allows you to automitize compilation and testing\
