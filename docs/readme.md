@@ -1,5 +1,5 @@
 # What is tst?
-Tst is a program, that helps you to do competetive programming competitions faster.
+Tst is a program, that helps you to do competitive programming competitions faster.
 It allows to check your solutions in the tests that were loaded from one of allowing
 servers, or tests that you created. It enables **Codeforces**
 
