@@ -7,6 +7,7 @@ servers, or tests that you created. It enables **Codeforces**
 # Instalation
 
 ## System requirements
+- g++
 - Linux system
 - Sudo access
 - Python 3.10 or newer
