@@ -3,14 +3,14 @@ Tst is a program, that helps you to do competitive programming competitions fast
 It allows to check your solutions in the tests that were loaded from one of allowing
 servers, or tests that you created. It enables **Codeforces**
 
+Supports Windows and Linux 
+
 
 # Instalation
 
 ## System requirements
 - g++
-- Linux system
-- Sudo access
-- Python 3.10 or newer
+- Python 3.10 <=
 - Python-3 pip
 
 
