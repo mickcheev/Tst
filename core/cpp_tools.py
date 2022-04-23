@@ -7,7 +7,7 @@ from colorama import Fore
 from . import manage_files
 from . import exceptions
 
-DEFAULT_SOURCE_NAME = 'main'
+DEFAULT_SOURCE_NAME = 'main.exe'
 
 
 def execute_cpp():
