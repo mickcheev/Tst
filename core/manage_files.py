@@ -1,8 +1,20 @@
 import json
+import platform
 import subprocess
 import os
 
-DEFAULT_PATH = '/etc/tst/'
+
+DEFAULT_PATH = ''
+
+system = platform.system()
+
+match system:
+    case 'Linux':
+       DEFAULT_PATH =  '/etc/tst'
+    case 'Windows':
+        user_name = os.getlogin()
+        DEFAULT_PATH = f'C:/Users/{user_name}/AppData/local/Tst/'
+
 
 def set_default_filename(filename: str):
     data = {}
@@ -38,8 +50,6 @@ def make_templated_cpp_file(filename: str):
     text = ''
     with open(DEFAULT_PATH+'base.cpp') as file:
         text = file.read()
-
-    subprocess.run(['touch', f'{filename}'])
     
     with open(filename, 'w') as file:
         file.write(text)
@@ -48,8 +58,6 @@ def make_templated_cpp_file(filename: str):
 
 
 def make_initialization_files():
-    os.system('touch previousfile')
-    os.system('touch samples.txt')
-
-
+    with open('previousfile', 'w'): pass
+    with open('sample.txt', 'w'): pass
     

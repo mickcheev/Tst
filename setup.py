@@ -1,4 +1,5 @@
 import os
+import platform
 import shutil
 from setuptools import setup, find_packages
 
@@ -22,7 +23,17 @@ setup(
 
 
 setup_path = os.getcwd()
-config_path =  '/etc/tst'
+
+system = platform.system()
+
+config_path = ''
+
+match system:
+    case 'Linux':
+        config_path =  '/etc/tst'
+    case 'Windows':
+        user_name = os.getlogin()
+        config_path = f'C:/Users/{user_name}/AppData/local/Tst'
 
 try:
     os.mkdir(config_path)
