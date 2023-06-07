@@ -10,7 +10,7 @@ system = platform.system()
 
 match system:
     case 'Linux':
-       DEFAULT_PATH =  '/etc/tst'
+       DEFAULT_PATH =  '/etc/tst/'
     case 'Windows':
         user_name = os.getlogin()
         DEFAULT_PATH = f'C:/Users/{user_name}/AppData/local/Tst/'
